@@ -51,8 +51,6 @@ public class MainMenuScript : MonoBehaviour {
 		_ceritaButton.onClick.AddListener(onClickCerita);
 		_tantanganButton.onClick.AddListener(onClickTantangan);
 		_koleksiButton.onClick.AddListener(onClickKoleksi);
-
-		_settings.gameObject.SetActive(false);
 	}
 
 	void Update () {
