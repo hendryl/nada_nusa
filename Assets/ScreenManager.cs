@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public enum Screen {
 	Main,
@@ -16,12 +17,13 @@ public class ScreenManager : MonoBehaviour {
 		get { return _currentScreen; }
 	}
 	public Component mainScreen, ceritaScreen;
+	public Image fadeOverlay;
+	public Animator fadeAnimator;
 
 	private static ScreenManager _instance;
 	private Screen _currentScreen = Screen.Main;
 
-	// Use this for initialization
-	void Start () {
+	void Awake () {
 		if (_instance != null && _instance != this) {
 			Destroy(this.gameObject);
 			return;
@@ -29,19 +31,24 @@ public class ScreenManager : MonoBehaviour {
 
 		_instance = this;
 		DontDestroyOnLoad(this.gameObject);
+
 	}
 
-	// Update is called once per frame
-	void Update () {
-
+	// Use this for initialization
+	void Start () {
+		ShowScreen(_currentScreen);
 	}
 
 	public void SetScreen (Screen screen) {
 		Screen previousScreen = _currentScreen;
 		_currentScreen = screen;
 
-		HideScreen(previousScreen);
-		ShowScreen(_currentScreen);
+		StartCoroutine(Fade(previousScreen, _currentScreen));
+	}
+
+	void HideAllScreens () {
+		mainScreen.gameObject.SetActive(false);
+		ceritaScreen.gameObject.SetActive(false);
 	}
 
 	void HideScreen (Screen screen) {
@@ -52,9 +59,23 @@ public class ScreenManager : MonoBehaviour {
 	}
 
 	void ShowScreen (Screen screen) {
+		Component c;
 		switch (screen) {
-			case Screen.Main: mainScreen.gameObject.SetActive(true);break;
-			case Screen.Cerita: ceritaScreen.gameObject.SetActive(true);break;
+			case Screen.Main: c = mainScreen;break;
+			case Screen.Cerita: c = ceritaScreen;break;
+			default: c = mainScreen;break;
 		}
+
+		c.gameObject.SetActive(true);
+		c.SendMessage("Setup");
+	}
+
+	IEnumerator Fade(Screen prev, Screen cur) {
+		fadeOverlay.gameObject.SetActive(true);
+		yield return new WaitUntil(() => fadeOverlay.color.a == 1);
+		HideScreen(prev);
+		ShowScreen(cur);
+		yield return new WaitUntil(() => fadeOverlay.color.a == 0);
+		fadeOverlay.gameObject.SetActive(false);
 	}
 }

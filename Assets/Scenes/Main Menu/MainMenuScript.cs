@@ -39,7 +39,9 @@ public class MainMenuScript : MonoBehaviour {
 		_ceritaButton.onClick.AddListener(onClickCerita);
 		_tantanganButton.onClick.AddListener(onClickTantangan);
 		_koleksiButton.onClick.AddListener(onClickKoleksi);
+	}
 
+	void Setup () {
 		AudioController.Instance.SetMusic(clip);
 		AudioController.Instance.PlayMusic();
 	}

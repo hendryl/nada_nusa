@@ -1,15 +1,23 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CeritaScript : MonoBehaviour {
 	public AudioClip clip;
+	public Button backButton;
+
+	private Button _backButton;
 
 	void Awake () {
+		_backButton = backButton.GetComponent<Button>();
 	}
 
-	// Use this for initialization
 	void Start () {
+		_backButton.onClick.AddListener(OnClickBack);
+	}
+
+	void Setup () {
 		AudioController.Instance.SetMusic(clip);
 		AudioController.Instance.PlayMusic();
 	}
@@ -17,5 +25,9 @@ public class CeritaScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
+	}
+
+	void OnClickBack () {
+		ScreenManager.Instance.SetScreen(Screen.Main);
 	}
 }
