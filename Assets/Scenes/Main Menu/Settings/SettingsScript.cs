@@ -6,23 +6,17 @@ using UnityEngine.UI;
 public class SettingsScript : MonoBehaviour {
 
 	public Toggle soundToggleG, musicToggleG, voiceToggleG;
-	public AudioSource audioTester, musicPlayer;
 
 	public Canvas settings;
 
 	private Toggle soundToggle, musicToggle, voiceToggle;
-	private AudioSource _audioTester, _musicPlayer;
 	private Canvas _settings;
-
-	private bool isMusicPaused = false;
 
 	// Use this for initialization
 	void Awake () {
 		soundToggle = soundToggleG.GetComponent<Toggle>();
 		musicToggle = musicToggleG.GetComponent<Toggle>();
 		voiceToggle = voiceToggleG.GetComponent<Toggle>();
-		_audioTester = audioTester.GetComponent<AudioSource>();
-		_musicPlayer = musicPlayer.GetComponent<AudioSource>();
 		_settings = settings.GetComponent<Canvas>();
 	}
 
@@ -53,7 +47,7 @@ public class SettingsScript : MonoBehaviour {
 
 	void OnChangeSound (bool newValue) {
 		if (newValue) {
-			_audioTester.Play();
+			AudioController.Instance.PlayButtonSound();
 			PlayerPrefs.SetInt("sound", 1);
 		} else {
 			PlayerPrefs.SetInt("sound", 0);
@@ -61,23 +55,19 @@ public class SettingsScript : MonoBehaviour {
 	}
 
 	void OnChangeMusic (bool newValue) {
+		AudioController controller = AudioController.Instance;
+
 		if (newValue) {
 			PlayerPrefs.SetInt("music", 1);
 
-			if (isMusicPaused && _musicPlayer) {
-				_musicPlayer.UnPause();
-				isMusicPaused = false;
-			} else if (_musicPlayer) {
-				_musicPlayer.Play();
+			if (controller.isMusicPaused) {
+				controller.UnPauseMusic();
+			} else {
+				controller.PlayMusic();
 			}
 		} else {
 			PlayerPrefs.SetInt("music", 0);
-
-			if (_musicPlayer) {
-				_musicPlayer.Pause();
-			}
-
-			isMusicPaused = true;
+			controller.PauseMusic();
 		}
 	}
 
