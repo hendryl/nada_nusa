@@ -47,8 +47,8 @@ public class SettingsScript : MonoBehaviour {
 
 	void OnChangeSound (bool newValue) {
 		if (newValue) {
-			AudioController.Instance.PlayButtonSound();
 			PlayerPrefs.SetInt("sound", 1);
+			AudioController.Instance.PlayButtonSound();
 		} else {
 			PlayerPrefs.SetInt("sound", 0);
 		}

@@ -19,8 +19,18 @@ public class AudioController : MonoBehaviour {
 	private AudioSource _music, _sfx;
 	private AudioListener audioListener;
 
-	int isMusicOn = 1;
-	int isSfxOn = 1;
+	int isMusicOn {
+		get {
+			return PlayerPrefs.GetInt("music", 1);
+		}
+	}
+
+	int isSfxOn {
+		get {
+			return PlayerPrefs.GetInt("sound", 1);
+		}
+	}
+
 	private bool _isMusicPaused = false;
 
 	// Use this for initialization
@@ -40,9 +50,6 @@ public class AudioController : MonoBehaviour {
 	void Start () {
 		audioListener = this.gameObject.AddComponent(typeof(AudioListener)) as AudioListener;
 		audioListener.enabled = true;
-
-		isMusicOn = PlayerPrefs.GetInt("music", 1);
-		isSfxOn = PlayerPrefs.GetInt("sound", 1);
 	}
 
 	public void SetMusic (AudioClip clip) {

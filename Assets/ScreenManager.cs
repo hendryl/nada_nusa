@@ -5,7 +5,8 @@ using UnityEngine.UI;
 
 public enum Screen {
 	Main,
-	Cerita
+	Cerita,
+	Prologue,
 }
 
 public class ScreenManager : MonoBehaviour {
@@ -16,7 +17,7 @@ public class ScreenManager : MonoBehaviour {
 	public Screen currentScreen {
 		get { return _currentScreen; }
 	}
-	public Component mainScreen, ceritaScreen;
+	public Component mainScreen, ceritaScreen, prologueScreen;
 	public Image fadeOverlay;
 	public Animator fadeAnimator;
 
@@ -31,12 +32,21 @@ public class ScreenManager : MonoBehaviour {
 
 		_instance = this;
 		DontDestroyOnLoad(this.gameObject);
-
 	}
 
 	// Use this for initialization
 	void Start () {
+		HideAllScreens();
 		ShowScreen(_currentScreen);
+	}
+
+	Component GetComponentFromScreen(Screen screen) {
+		switch (screen) {
+			case Screen.Main: return mainScreen;
+			case Screen.Cerita: return ceritaScreen;
+			case Screen.Prologue: return prologueScreen;
+			default: return mainScreen;
+		}
 	}
 
 	public void SetScreen (Screen screen) {
@@ -47,25 +57,20 @@ public class ScreenManager : MonoBehaviour {
 	}
 
 	void HideAllScreens () {
-		mainScreen.gameObject.SetActive(false);
-		ceritaScreen.gameObject.SetActive(false);
+		foreach (Screen screen in Screen.GetValues(typeof(Screen)))
+		{
+			Component c = GetComponentFromScreen(screen);
+			c.gameObject.SetActive(false);
+		}
 	}
 
 	void HideScreen (Screen screen) {
-		switch (screen) {
-			case Screen.Main: mainScreen.gameObject.SetActive(false);break;
-			case Screen.Cerita: ceritaScreen.gameObject.SetActive(false);break;
-		}
+		Component c = GetComponentFromScreen(screen);
+		c.gameObject.SetActive(false);
 	}
 
 	void ShowScreen (Screen screen) {
-		Component c;
-		switch (screen) {
-			case Screen.Main: c = mainScreen;break;
-			case Screen.Cerita: c = ceritaScreen;break;
-			default: c = mainScreen;break;
-		}
-
+		Component c = GetComponentFromScreen(screen);
 		c.gameObject.SetActive(true);
 		c.SendMessage("Setup");
 	}
