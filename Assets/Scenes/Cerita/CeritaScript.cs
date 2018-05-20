@@ -69,32 +69,23 @@ public class CeritaScript : MonoBehaviour {
 		playButtonImage.color = c;
 	}
 
-	void PlayButtonSound () {
-		AudioController.Instance.PlayButtonSound();
-	}
-
 	void OnClickBack () {
-		PlayButtonSound();
 		ScreenManager.Instance.SetScreen(Screen.Main);
 	}
 
 	void OnClickLeft () {
-		PlayButtonSound();
 		currentSelection = currentSelection - 1 < 0
 			? 0
 			: currentSelection - 1;
 	}
 
 	void OnClickRight () {
-		PlayButtonSound();
 		currentSelection = currentSelection + 1 == stories.Length
 			? currentSelection
 			: currentSelection + 1;
 	}
 
 	void OnClickPlay () {
-		PlayButtonSound();
-
 		if (currentSelection == 0) {
 			ScreenManager.Instance.SetScreen(Screen.Prologue);
 		} else if (currentSelection == 1) {

@@ -71,34 +71,24 @@ public class MainMenuScript : MonoBehaviour {
 		}
 	}
 
-	void PlayButtonSound () {
-		AudioController.Instance.PlayButtonSound();
-	}
-
 	void onClickCerita () {
-		PlayButtonSound();
 		ScreenManager.Instance.SetScreen(Screen.Cerita);
 	}
 
 	void onClickTantangan () {
-		PlayButtonSound();
 	}
 
 	void onClickKoleksi () {
-		PlayButtonSound();
 	}
 
 	void OnClickSettings () {
-		PlayButtonSound();
 		currentScreen = MainMenuScreens.Settings;
 	}
 
 	void OnClickCloseSettings () {
-		PlayButtonSound();
 		currentScreen = MainMenuScreens.Main;
 	}
 
 	void OnClickInfo () {
-		PlayButtonSound();
 	}
 }
