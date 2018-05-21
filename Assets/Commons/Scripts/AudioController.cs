@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class AudioController : MonoBehaviour {
 
-
 	public static AudioController Instance {
 		get { return _instance; }
 	}
@@ -13,10 +12,10 @@ public class AudioController : MonoBehaviour {
 		get { return _isMusicPaused; }
 	}
 
-	public AudioSource musicPlayer, sfxPlayer;
+	public AudioSource musicPlayer, sfxPlayer, voicePlayer;
 
 	private static AudioController _instance;
-	private AudioSource _music, _sfx;
+	private AudioSource _music, _sfx, _voice;
 	private AudioListener audioListener;
 
 	int isMusicOn {
@@ -28,6 +27,12 @@ public class AudioController : MonoBehaviour {
 	int isSfxOn {
 		get {
 			return PlayerPrefs.GetInt("sound", 1);
+		}
+	}
+
+	int isVoiceOn {
+		get {
+			return PlayerPrefs.GetInt("voice", 1);
 		}
 	}
 
@@ -45,6 +50,7 @@ public class AudioController : MonoBehaviour {
 
 		_music = musicPlayer.GetComponent<AudioSource>();
 		_sfx = sfxPlayer.GetComponent<AudioSource>();
+		_voice = voicePlayer.GetComponent<AudioSource>();
 	}
 
 	void Start () {
@@ -79,6 +85,19 @@ public class AudioController : MonoBehaviour {
 	public void PlayButtonSound () {
 		if (isSfxOn == 1) {
 			_sfx.Play();
+		}
+	}
+
+	public void PlayVoice (AudioClip v) {
+		if (isVoiceOn == 1) {
+			_voice.clip = v;
+			_voice.Play();
+		}
+	}
+
+	public void StopVoice () {
+		if (_voice.isPlaying) {
+			_voice.Stop();
 		}
 	}
 }
