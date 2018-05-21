@@ -12,31 +12,35 @@ public class AudioController : MonoBehaviour {
 		get { return _isMusicPaused; }
 	}
 
+	public bool isVoicePaused {
+		get { return _isVoicePaused; }
+	}
+
 	public AudioSource musicPlayer, sfxPlayer, voicePlayer;
 
 	private static AudioController _instance;
 	private AudioSource _music, _sfx, _voice;
 	private AudioListener audioListener;
 
-	int isMusicOn {
+	bool isMusicOn {
 		get {
-			return PlayerPrefs.GetInt("music", 1);
+			return PlayerPrefs.GetInt("music", 1) == 1;
 		}
 	}
 
-	int isSfxOn {
+	bool isSfxOn {
 		get {
-			return PlayerPrefs.GetInt("sound", 1);
+			return PlayerPrefs.GetInt("sound", 1) == 1;
 		}
 	}
 
-	int isVoiceOn {
+	bool isVoiceOn {
 		get {
-			return PlayerPrefs.GetInt("voice", 1);
+			return PlayerPrefs.GetInt("voice", 1) == 1;
 		}
 	}
 
-	private bool _isMusicPaused = false;
+	private bool _isMusicPaused = false, _isVoicePaused = false;
 
 	// Use this for initialization
 	void Awake () {
@@ -67,31 +71,49 @@ public class AudioController : MonoBehaviour {
 	}
 
 	public void UnPauseMusic () {
-		_music.UnPause();
-		_isMusicPaused = false;
+		if (_isMusicPaused && isMusicOn) {
+			_music.UnPause();
+			_isMusicPaused = false;
+		}
 	}
 
 	public void PauseMusic () {
-		_music.Pause();
-		_isMusicPaused = true;
+		if (_music.isPlaying) {
+			_music.Pause();
+			_isMusicPaused = true;
+		}
 	}
 
 	public void PlayMusic () {
-		if (isMusicOn == 1) {
+		if (isMusicOn ) {
 			_music.Play();
 		}
 	}
 
 	public void PlayButtonSound () {
-		if (isSfxOn == 1) {
+		if (isSfxOn) {
 			_sfx.Play();
 		}
 	}
 
 	public void PlayVoice (AudioClip v) {
-		if (isVoiceOn == 1) {
+		if (isVoiceOn) {
 			_voice.clip = v;
 			_voice.Play();
+		}
+	}
+
+	public void PauseVoice () {
+		if (_voice.isPlaying) {
+			_voice.Pause();
+			_isVoicePaused = true;
+		}
+	}
+
+	public void UnPauseVoice () {
+		if (_isVoicePaused && isVoiceOn) {
+			_voice.UnPause();
+			_isVoicePaused = false;
 		}
 	}
 
@@ -99,5 +121,9 @@ public class AudioController : MonoBehaviour {
 		if (_voice.isPlaying) {
 			_voice.Stop();
 		}
+	}
+
+	public void ClearVoice () {
+		_voice.clip = null;
 	}
 }

@@ -7,11 +7,11 @@ public class StoryController : MonoBehaviour {
 	public AudioClip clip;
     public Image background;
     public Component storageScript;
-    public Button prevButton, nextButton;
-    public Canvas textBox;
+    public Button prevButton, nextButton, menuButton;
+    public Canvas textBox, menuCanvas;
 
     StorageInterface storage;
-    Button _prevButton, _nextButton;
+    Button _prevButton, _nextButton, _menuButton;
     Image _bg;
     Button _clickArea;
     Text _text;
@@ -22,12 +22,14 @@ public class StoryController : MonoBehaviour {
         _text = textBox.gameObject.GetComponentInChildren<Text>();
         _prevButton = prevButton.GetComponent<Button>();
         _nextButton = nextButton.GetComponent<Button>();
+        _menuButton = menuButton.GetComponent<Button>();
         storage = storageScript.GetComponent<StorageInterface>();
 	}
 
 	void Start () {
         _prevButton.onClick.AddListener(OnClickPrev);
         _nextButton.onClick.AddListener(OnClickNext);
+        _menuButton.onClick.AddListener(OnClickMenu);
 	}
 
 	void Setup () {
@@ -76,6 +78,13 @@ public class StoryController : MonoBehaviour {
 			_prevButton.gameObject.SetActive(true);
 		}
 	}
+
+    void OnClickMenu () {
+        if (this.gameObject.activeInHierarchy) {
+            menuCanvas.gameObject.SetActive(true);
+            AudioController.Instance.PauseVoice();
+        }
+    }
 
 	void HideBackground () {
 		_bg.sprite = null;

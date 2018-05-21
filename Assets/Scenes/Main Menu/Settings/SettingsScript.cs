@@ -76,6 +76,7 @@ public class SettingsScript : MonoBehaviour {
 			PlayerPrefs.SetInt("voice", 1);
 		} else {
 			PlayerPrefs.SetInt("voice", 0);
+			AudioController.Instance.StopVoice();
 		}
 	}
 }
