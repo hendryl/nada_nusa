@@ -19,7 +19,6 @@ public class ScreenManager : MonoBehaviour {
 	}
 	public Component mainScreen, ceritaScreen, prologueScreen;
 	public Image fadeOverlay;
-	public Animator fadeAnimator;
 
 	private static ScreenManager _instance;
 	private Screen _currentScreen = Screen.Main;
