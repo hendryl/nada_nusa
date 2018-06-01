@@ -7,22 +7,30 @@ public class StoryController : MonoBehaviour {
 	public AudioClip clip;
     public Image background;
     public Component storageScript;
-    public Button prevButton, nextButton, menuButton;
+    public Button prevButton, nextButton, menuButton, textBoxButton;
     public Canvas textBox, menuCanvas;
 
     StorageInterface storage;
-    Button _prevButton, _nextButton, _menuButton;
+    Button _prevButton, _nextButton, _menuButton, _textBoxButton;
+    RectTransform _textBoxRect;
     Image _bg;
     Button _clickArea;
     Text _text;
     int currentTextIndex = 0;
+    bool textBoxIsShown = false;
+
+	const float SPEED = 8f;
+    const float textBoxOpenY = -320f;
+    const float textBoxCloseY = -485f;
 
 	void Awake () {
         _bg = background.GetComponent<Image>();
         _text = textBox.gameObject.GetComponentInChildren<Text>();
+        _textBoxRect = textBox.GetComponent<RectTransform>();
         _prevButton = prevButton.GetComponent<Button>();
         _nextButton = nextButton.GetComponent<Button>();
         _menuButton = menuButton.GetComponent<Button>();
+        _textBoxButton = textBoxButton.GetComponent<Button>();
         storage = storageScript.GetComponent<StorageInterface>();
 	}
 
@@ -30,6 +38,7 @@ public class StoryController : MonoBehaviour {
         _prevButton.onClick.AddListener(OnClickPrev);
         _nextButton.onClick.AddListener(OnClickNext);
         _menuButton.onClick.AddListener(OnClickMenu);
+        _textBoxButton.onClick.AddListener(OnClickTextBoxButton);
 	}
 
 	void Setup () {
@@ -39,6 +48,10 @@ public class StoryController : MonoBehaviour {
 		_prevButton.gameObject.SetActive(false);
         HideBackground();
         SetNewPage();
+
+        if (textBoxIsShown) {
+            SetTextBoxIsShown(false);
+        }
 	}
 
     void SetNewPage () {
@@ -51,7 +64,17 @@ public class StoryController : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		// pagination
+        Vector3 targetPosition = textBoxIsShown
+            ? new Vector3(0, textBoxOpenY, 0)
+            : new Vector3(0, textBoxCloseY, 0);
+
+		Vector3 movementNeeded = targetPosition - _textBoxRect.localPosition;
+
+		if (Mathf.Abs(movementNeeded.x) < 1f) {
+			_textBoxRect.localPosition = targetPosition;
+		} else {
+			_textBoxRect.Translate(movementNeeded * SPEED * Time.deltaTime);
+		}
 	}
 
     void OnClickNext () {
@@ -84,6 +107,17 @@ public class StoryController : MonoBehaviour {
             menuCanvas.gameObject.SetActive(true);
             AudioController.Instance.PauseVoice();
         }
+    }
+
+    void OnClickTextBoxButton () {
+        SetTextBoxIsShown(!textBoxIsShown);
+    }
+
+    void SetTextBoxIsShown (bool value) {
+        Transform rect = _textBoxButton.gameObject.GetComponent<RectTransform>().GetChild(0);
+        textBoxIsShown = value;
+
+        rect.Rotate(new Vector3(0, 0, 180));
     }
 
 	void HideBackground () {
