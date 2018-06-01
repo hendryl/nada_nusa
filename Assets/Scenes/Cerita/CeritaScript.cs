@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class CeritaScript : MonoBehaviour {
 	public AudioClip clip;
 	public Button backButton, leftButton, rightButton, playButton;
+	public Image lockImage;
 	public RectTransform chapterCanvasT;
 
 	private Button _backButton, _leftButton, _rightButton, _playButton;
@@ -14,8 +15,9 @@ public class CeritaScript : MonoBehaviour {
 	int currentSelection = 0;
 	const int X_DISTANCE = 1600;
 	const int BASE_X = -800;
+	const int MAX_PLAYABLE = 2; // inclusive
 	const float SPEED = 8f;
-	string[] stories = new string[3] { "prologue", "ampar", "bungong" };
+	string[] stories = new string[4] { "prologue", "bungong", "ampar", "cublak" };
 
 	void Awake () {
 		_backButton = backButton.GetComponent<Button>();
@@ -62,11 +64,18 @@ public class CeritaScript : MonoBehaviour {
 			_chapterCanvasT.Translate(movementNeeded * SPEED * Time.deltaTime);
 		}
 
-		// play button
-		Image playButtonImage = _playButton.GetComponent<Image>();
-		Color c = playButtonImage.color;
-		c.a = movementNeeded == Vector3.zero ? 1F : 0.3F;
-		playButtonImage.color = c;
+		if (movementNeeded == Vector3.zero) {
+			if (currentSelection > MAX_PLAYABLE) {
+				lockImage.gameObject.SetActive(true);
+				playButton.gameObject.SetActive(false);
+			} else {
+				lockImage.gameObject.SetActive(false);
+				playButton.gameObject.SetActive(true);
+			}
+		} else {
+			playButton.gameObject.SetActive(false);
+			lockImage.gameObject.SetActive(false);
+		}
 	}
 
 	void OnClickBack () {
