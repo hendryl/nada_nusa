@@ -8,7 +8,7 @@ public class StoryController : MonoBehaviour {
     public Image background;
     public Component storageScript;
     public Button prevButton, nextButton, menuButton, textBoxButton;
-    public Canvas textBox, menuCanvas;
+    public Canvas textBox, menuCanvas, chapterCompleteCanvas;
 
     StorageInterface storage;
     Button _prevButton, _nextButton, _menuButton, _textBoxButton;
@@ -87,8 +87,14 @@ public class StoryController : MonoBehaviour {
         if (currentTextIndex < storage.models.Count) {
             SetNewPage();
         } else {
-            _prevButton.gameObject.SetActive(false);
-            _nextButton.gameObject.SetActive(false);
+            currentTextIndex = storage.models.Count - 1;
+
+            AudioController.Instance.StopVoice();
+
+            var chapterCompleteGameObject = chapterCompleteCanvas.gameObject;
+
+            chapterCompleteGameObject.GetComponentInChildren<Text>().text = storage.chapterCompleteString;
+            chapterCompleteGameObject.SetActive(true);
         }
     }
 

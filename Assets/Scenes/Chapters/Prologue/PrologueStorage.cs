@@ -10,6 +10,12 @@ public class PrologueStorage : MonoBehaviour, StorageInterface {
     public List<string> texts { get { return _texts; } }
     public List<TextModel> models { get { return _models; } }
 
+    public string chapterCompleteString {
+        get {
+            return "Ikuti terus perjalanan pangeran Nusa mencari hadiah terindah untuk ulang tahun ayahanda.";
+        }
+    }
+
     public List<Sprite> _sprites;
     public List<AudioClip> _voices;
     public List<string> _texts = new List<string>(new string[] {

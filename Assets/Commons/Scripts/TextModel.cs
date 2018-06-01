@@ -19,4 +19,6 @@ public interface StorageInterface {
     List<Sprite> sprites { get; }
     List<string> texts { get; }
     List<TextModel> models { get; }
+
+    string chapterCompleteString { get; }
 }
