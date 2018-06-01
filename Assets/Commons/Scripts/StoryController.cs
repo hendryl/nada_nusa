@@ -21,7 +21,7 @@ public class StoryController : MonoBehaviour {
 
 	const float SPEED = 8f;
     const float textBoxOpenY = -320f;
-    const float textBoxCloseY = -485f;
+    const float textBoxCloseY = -486f;
 
 	void Awake () {
         _bg = background.GetComponent<Image>();
@@ -87,7 +87,8 @@ public class StoryController : MonoBehaviour {
         if (currentTextIndex < storage.models.Count) {
             SetNewPage();
         } else {
-            // TODO: Show finished modal
+            _prevButton.gameObject.SetActive(false);
+            _nextButton.gameObject.SetActive(false);
         }
     }
 
