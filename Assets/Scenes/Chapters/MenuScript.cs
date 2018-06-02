@@ -33,7 +33,7 @@ public class MenuScript : MonoBehaviour {
 	}
 
 	void OnClickExit () {
-		ScreenManager.Instance.SetScreen(Screen.Cerita);
+		ScreenManager.Instance.SetScreen(GameScreen.Cerita);
 		AudioController.Instance.ClearVoice();
 		this.gameObject.SetActive(false);
 	}

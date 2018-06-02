@@ -12,7 +12,7 @@ public class ChapterCompleteController : MonoBehaviour {
 	}
 
 	void OnClickComplete () {
-        ScreenManager.Instance.SetScreen(Screen.Cerita);
+        ScreenManager.Instance.SetScreen(GameScreen.Cerita);
         this.gameObject.SetActive(false);
 	}
 

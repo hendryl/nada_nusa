@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public enum Screen {
+public enum GameScreen {
 	Main,
 	Cerita,
 	Prologue,
@@ -14,14 +14,15 @@ public class ScreenManager : MonoBehaviour {
 	public static ScreenManager Instance {
 		get { return _instance; }
 	}
-	public Screen currentScreen {
+	public GameScreen currentScreen {
 		get { return _currentScreen; }
 	}
 	public Component mainScreen, ceritaScreen, prologueScreen;
 	public Image fadeOverlay;
+	public Camera mainCamera;
 
 	private static ScreenManager _instance;
-	private Screen _currentScreen = Screen.Main;
+	private GameScreen _currentScreen = GameScreen.Main;
 
 	void Awake () {
 		if (_instance != null && _instance != this) {
@@ -31,6 +32,8 @@ public class ScreenManager : MonoBehaviour {
 
 		_instance = this;
 		DontDestroyOnLoad(this.gameObject);
+
+		mainCamera.GetComponent<Camera>().orthographicSize = 1600/Screen.width * Screen.height/2;
 	}
 
 	// Use this for initialization
@@ -39,42 +42,42 @@ public class ScreenManager : MonoBehaviour {
 		ShowScreen(_currentScreen);
 	}
 
-	Component GetComponentFromScreen(Screen screen) {
+	Component GetComponentFromScreen(GameScreen screen) {
 		switch (screen) {
-			case Screen.Main: return mainScreen;
-			case Screen.Cerita: return ceritaScreen;
-			case Screen.Prologue: return prologueScreen;
+			case GameScreen.Main: return mainScreen;
+			case GameScreen.Cerita: return ceritaScreen;
+			case GameScreen.Prologue: return prologueScreen;
 			default: return mainScreen;
 		}
 	}
 
-	public void SetScreen (Screen screen) {
-		Screen previousScreen = _currentScreen;
+	public void SetScreen (GameScreen screen) {
+		GameScreen previousScreen = _currentScreen;
 		_currentScreen = screen;
 
 		StartCoroutine(Fade(previousScreen, _currentScreen));
 	}
 
 	void HideAllScreens () {
-		foreach (Screen screen in Screen.GetValues(typeof(Screen)))
+		foreach (GameScreen screen in GameScreen.GetValues(typeof(GameScreen)))
 		{
 			Component c = GetComponentFromScreen(screen);
 			c.gameObject.SetActive(false);
 		}
 	}
 
-	void HideScreen (Screen screen) {
+	void HideScreen (GameScreen screen) {
 		Component c = GetComponentFromScreen(screen);
 		c.gameObject.SetActive(false);
 	}
 
-	void ShowScreen (Screen screen) {
+	void ShowScreen (GameScreen screen) {
 		Component c = GetComponentFromScreen(screen);
 		c.gameObject.SetActive(true);
 		c.SendMessage("Setup");
 	}
 
-	IEnumerator Fade(Screen prev, Screen cur) {
+	IEnumerator Fade(GameScreen prev, GameScreen cur) {
 		fadeOverlay.gameObject.SetActive(true);
 		yield return new WaitUntil(() => fadeOverlay.color.a == 1);
 		HideScreen(prev);

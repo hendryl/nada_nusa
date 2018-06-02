@@ -79,7 +79,7 @@ public class CeritaScript : MonoBehaviour {
 	}
 
 	void OnClickBack () {
-		ScreenManager.Instance.SetScreen(Screen.Main);
+		ScreenManager.Instance.SetScreen(GameScreen.Main);
 	}
 
 	void OnClickLeft () {
@@ -96,7 +96,7 @@ public class CeritaScript : MonoBehaviour {
 
 	void OnClickPlay () {
 		if (currentSelection == 0) {
-			ScreenManager.Instance.SetScreen(Screen.Prologue);
+			ScreenManager.Instance.SetScreen(GameScreen.Prologue);
 		} else if (currentSelection == 1) {
 
 		} else if (currentSelection == 2) {

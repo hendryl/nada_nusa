@@ -20,8 +20,8 @@ public class StoryController : MonoBehaviour {
     bool textBoxIsShown = false;
 
 	const float SPEED = 8f;
-    const float textBoxOpenY = -320f;
-    const float textBoxCloseY = -486f;
+    const float textBoxOpenY = 83f;
+    const float textBoxCloseY = -83f;
 
 	void Awake () {
         _bg = background.GetComponent<Image>();
@@ -64,16 +64,16 @@ public class StoryController : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-        Vector3 targetPosition = textBoxIsShown
-            ? new Vector3(0, textBoxOpenY, 0)
-            : new Vector3(0, textBoxCloseY, 0);
+        Vector2 targetPosition = textBoxIsShown
+            ? new Vector2(0, textBoxOpenY)
+            : new Vector2(0, textBoxCloseY);
 
-		Vector3 movementNeeded = targetPosition - _textBoxRect.localPosition;
+		Vector2 movementNeeded = targetPosition - _textBoxRect.anchoredPosition;
 
 		if (Mathf.Abs(movementNeeded.x) < 1f) {
-			_textBoxRect.localPosition = targetPosition;
+			_textBoxRect.anchoredPosition = targetPosition;
 		} else {
-			_textBoxRect.Translate(movementNeeded * SPEED * Time.deltaTime);
+			_textBoxRect.Translate(movementNeeded * SPEED * Time.deltaTime, Space.World);
 		}
 	}
 

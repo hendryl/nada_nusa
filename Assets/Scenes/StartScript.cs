@@ -8,10 +8,15 @@ public class StartScript : MonoBehaviour {
 
 	public Text text;
 	public Image fadeOverlay;
+	public Camera mainCamera;
 
 	private AsyncOperation asyncLoad;
 
 	// Use this for initialization
+	void Awake () {
+		mainCamera.GetComponent<Camera>().orthographicSize = 1600/Screen.width * Screen.height/2;
+	}
+
 	void Start () {
 		StartCoroutine(LoadScene());
 	}

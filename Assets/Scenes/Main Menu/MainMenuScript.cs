@@ -91,7 +91,7 @@ public class MainMenuScript : MonoBehaviour {
 	}
 
 	void onClickCerita () {
-		ScreenManager.Instance.SetScreen(Screen.Cerita);
+		ScreenManager.Instance.SetScreen(GameScreen.Cerita);
 	}
 
 	void onClickTantangan () {
