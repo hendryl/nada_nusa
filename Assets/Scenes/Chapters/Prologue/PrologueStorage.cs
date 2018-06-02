@@ -44,7 +44,7 @@ public class PrologueStorage : MonoBehaviour, StorageInterface {
         new TextModel(7,7,4),
         new TextModel(8,8,4),
         new TextModel(9,9,5),
-        new TextModel(10,10,6),
+        new TextModel(10,10,5),
         new TextModel(11,11,6),
         new TextModel(12,12,6)
     });

@@ -98,7 +98,7 @@ public class CeritaScript : MonoBehaviour {
 		if (currentSelection == 0) {
 			ScreenManager.Instance.SetScreen(GameScreen.Prologue);
 		} else if (currentSelection == 1) {
-
+			ScreenManager.Instance.SetScreen(GameScreen.BungongJumpa);
 		} else if (currentSelection == 2) {
 
 		}

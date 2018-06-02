@@ -7,6 +7,7 @@ public enum GameScreen {
 	Main,
 	Cerita,
 	Prologue,
+	BungongJumpa
 }
 
 public class ScreenManager : MonoBehaviour {
@@ -17,7 +18,7 @@ public class ScreenManager : MonoBehaviour {
 	public GameScreen currentScreen {
 		get { return _currentScreen; }
 	}
-	public Component mainScreen, ceritaScreen, prologueScreen;
+	public Component mainScreen, ceritaScreen, prologueScreen, bungongScreen;
 	public Image fadeOverlay;
 	public Camera mainCamera;
 
@@ -47,6 +48,7 @@ public class ScreenManager : MonoBehaviour {
 			case GameScreen.Main: return mainScreen;
 			case GameScreen.Cerita: return ceritaScreen;
 			case GameScreen.Prologue: return prologueScreen;
+			case GameScreen.BungongJumpa: return bungongScreen;
 			default: return mainScreen;
 		}
 	}
