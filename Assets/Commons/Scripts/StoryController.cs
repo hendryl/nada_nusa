@@ -18,6 +18,7 @@ public class StoryController : MonoBehaviour {
     Text _text;
     int currentTextIndex = 0;
     bool textBoxIsShown = false;
+    bool isChapterMusicPlayed = false;
 
 	const float SPEED = 8f;
     const float textBoxOpenY = 83f;
@@ -57,9 +58,21 @@ public class StoryController : MonoBehaviour {
     void SetNewPage () {
         TextModel model = storage.models[currentTextIndex];
 
-        _bg.sprite = storage.sprites[model.spriteIndex];
-        _text.text = storage.texts[model.textIndex];
-        AudioController.Instance.PlayVoice(storage.voices[model.voiceIndex]);
+        if (model.isMusicSection) {
+            _bg.sprite = storage.sprites[model.spriteIndex];
+            AudioController.Instance.StopVoice();
+
+            if (isChapterMusicPlayed) {
+                this.isChapterMusicPlayed = true;
+
+            } else {
+                // show play button
+            }
+        } else {
+            _bg.sprite = storage.sprites[model.spriteIndex];
+            _text.text = storage.texts[model.textIndex];
+            AudioController.Instance.PlayVoice(storage.voices[model.voiceIndex]);
+        }
     }
 
 	// Update is called once per frame

@@ -2,12 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BungongStorage : MonoBehaviour, StorageInterface {
+public class BungongStorage : MonoBehaviour, StorageInterface, LyricStorageInterface {
 
 	public List<Sprite> sprites { get { return _sprites; } }
     public List<AudioClip> voices { get { return _voices; } }
     public List<string> texts { get { return _texts; } }
     public List<TextModel> models { get { return _models; } }
+
+    public List<string> lyrics { get { return _lyrics; } }
+
+    public List<LyricModel> lyricModels { get { return _lyricModels; }}
+
+    public float endTime { get { return _endTime; }}
 
     public string chapterCompleteString {
         get {
@@ -17,7 +23,7 @@ public class BungongStorage : MonoBehaviour, StorageInterface {
 
     public List<Sprite> _sprites;
     public List<AudioClip> _voices;
-    public List<string> _texts = new List<string>(new string[] {
+    List<string> _texts = new List<string>(new string[] {
         "Setelah menempuh perjalanan yang cukup jauh, akhirnya pangeran tiba di daerah paling barat, yaitu Aceh.",
         "Kemudian ia menanyakan pendapat dari kepala desa tentang benda terindah di daerah ini.",
         "\"Ah.. Bunga Cempaka saja.\", jawab kepala desa.",
@@ -35,7 +41,7 @@ public class BungongStorage : MonoBehaviour, StorageInterface {
 		"\"Sudah kuputuskan bahwa hadiah yang akan kuberi adalah keindahan alunan lagu daerah yang ada di kerajaan Nusantara.\"",
 		"Kemudian pangeran pun melanjutkan perjalanannya."
     });
-    public List<TextModel> _models = new List<TextModel>(new TextModel[] {
+    List<TextModel> _models = new List<TextModel>(new TextModel[] {
 		new TextModel(0,0,0),
         new TextModel(1,1,0),
         new TextModel(2,2,0),
@@ -46,6 +52,7 @@ public class BungongStorage : MonoBehaviour, StorageInterface {
         new TextModel(7,7,2),
         new TextModel(8,8,2),
         new TextModel(9,9,2),
+        new TextModel(true, 9),
         new TextModel(10,10,3),
         new TextModel(11,11,3),
         new TextModel(12,12,3),
@@ -53,4 +60,46 @@ public class BungongStorage : MonoBehaviour, StorageInterface {
         new TextModel(14,14,4),
         new TextModel(15,15,4),
     });
+
+    List<string> _lyrics = new List<string>(new string[] {
+        "Bungong jeumpa bungong jeumpa meugah di Aceh",
+        "Bungong teuleube, teuleube indah lagoina",
+        "Puteh kuneng meujampu mirah",
+        "Bungong si ulah indah lagoina",
+        "Lam sinar buleun lam sinar buleun angeen peu ayon",
+        "Luroh meususon, meususon nyang mala-mala",
+        "Keubit that meubee meunyoe tatem com",
+        "Leupah that harom si bungong jeumpa",
+        ""
+    });
+
+    List<LyricModel> _lyricModels = new List<LyricModel>(new LyricModel[] {
+        new LyricModel(0, 18),
+        new LyricModel(1, 24),
+        new LyricModel(0, 31),
+        new LyricModel(1, 37),
+        new LyricModel(2, 44),
+        new LyricModel(3, 50),
+        new LyricModel(2, 57),
+        new LyricModel(3, 63),
+        new LyricModel(4, 71),
+        new LyricModel(5, 77),
+        new LyricModel(4, 84),
+        new LyricModel(5, 90),
+        new LyricModel(6, 97),
+        new LyricModel(7, 103),
+        new LyricModel(6, 110),
+        new LyricModel(7, 116),
+        new LyricModel(8, 124),
+        new LyricModel(0, 146),
+        new LyricModel(1, 152),
+        new LyricModel(0, 159),
+        new LyricModel(1, 165),
+        new LyricModel(2, 171),
+        new LyricModel(3, 178),
+        new LyricModel(2, 186),
+        new LyricModel(3, 192)
+    });
+
+    float _endTime = 202f;
 }
