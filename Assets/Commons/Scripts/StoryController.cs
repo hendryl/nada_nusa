@@ -97,6 +97,7 @@ public class StoryController : MonoBehaviour {
 
     public void OnChapterMusicFinish () {
         OnClickNext();
+        AudioController.Instance.UnPauseMusic();
     }
 
     void OnClickNext () {

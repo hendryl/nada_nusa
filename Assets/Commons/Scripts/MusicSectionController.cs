@@ -47,7 +47,13 @@ public class MusicSectionController : MonoBehaviour {
             currentTime += Time.deltaTime;
 
             if (isVertical) {
-
+                if (bgHeight > (Mathf.Abs(bgRect.anchoredPosition.y))) {
+                    float targetY = (Time.deltaTime / storage.endTime) * bgHeight;
+                    bgRect.Translate(new Vector3(0, targetY, 0));
+                } else {
+                    bgRect.anchoredPosition = new Vector2(0, bgHeight);
+                    nextButton.gameObject.SetActive(true);
+                }
             } else {
                 if (bgWidth > (Mathf.Abs(bgRect.anchoredPosition.x))) {
                     float targetX = (Time.deltaTime / storage.endTime) * bgWidth;
@@ -111,7 +117,7 @@ public class MusicSectionController : MonoBehaviour {
             rect.sizeDelta = Vector2.zero;
 
             if (isVertical) {
-                rect.Translate(new Vector3(0, i * Screen.height, 0));
+                rect.Translate(new Vector3(0, -i * Screen.height, 0));
             } else {
                 rect.Translate(new Vector3(i * Screen.width, 0, 0));
             }
@@ -119,8 +125,8 @@ public class MusicSectionController : MonoBehaviour {
             NewObj.SetActive(true); //Activate the GameObject
         }
 
-        bgWidth = lastImage.GetComponent<RectTransform>().anchoredPosition.x;
-        bgHeight = lastImage.GetComponent<RectTransform>().anchoredPosition.y;
+        bgWidth = Mathf.Abs(lastImage.GetComponent<RectTransform>().anchoredPosition.x);
+        bgHeight = Mathf.Abs(lastImage.GetComponent<RectTransform>().anchoredPosition.y);
     }
 
     public void OnClickMenu () {

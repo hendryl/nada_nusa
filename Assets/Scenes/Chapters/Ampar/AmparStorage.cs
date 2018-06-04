@@ -72,6 +72,7 @@ public class AmparStorage : MonoBehaviour, StorageInterface, LyricStorageInterfa
     });
 
     List<LyricModel> _lyricModels = new List<LyricModel>(new LyricModel[] {
+        new LyricModel(6, 0),
         new LyricModel(0, 7),
         new LyricModel(1, 10),
         new LyricModel(2, 12),
@@ -100,7 +101,8 @@ public class AmparStorage : MonoBehaviour, StorageInterface, LyricStorageInterfa
         new LyricModel(3, 121),
         new LyricModel(4, 125),
         new LyricModel(5, 132),
+        new LyricModel(6, 140),
     });
 
-    float _endTime = 140f;
+    float _endTime = 148f;
 }
