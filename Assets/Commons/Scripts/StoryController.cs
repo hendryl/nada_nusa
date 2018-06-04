@@ -8,8 +8,9 @@ public class StoryController : MonoBehaviour {
     public Image background;
     public Component storageScript;
     public Button prevButton, nextButton, menuButton, textBoxButton;
-    public Canvas textBox, menuCanvas, chapterCompleteCanvas;
+    public Canvas textBox, menuCanvas, chapterCompleteCanvas, songCanvas;
 
+    Canvas _songCanvas;
     StorageInterface storage;
     Button _prevButton, _nextButton, _menuButton, _textBoxButton;
     RectTransform _textBoxRect;
@@ -32,6 +33,7 @@ public class StoryController : MonoBehaviour {
         _nextButton = nextButton.GetComponent<Button>();
         _menuButton = menuButton.GetComponent<Button>();
         _textBoxButton = textBoxButton.GetComponent<Button>();
+        _songCanvas = songCanvas.GetComponent<Canvas>();
         storage = storageScript.GetComponent<StorageInterface>();
 	}
 
@@ -47,6 +49,7 @@ public class StoryController : MonoBehaviour {
 		AudioController.Instance.PlayMusic();
         currentTextIndex = 0;
 		_prevButton.gameObject.SetActive(false);
+        _songCanvas.gameObject.SetActive(false);
         HideBackground();
         SetNewPage();
 
@@ -61,12 +64,14 @@ public class StoryController : MonoBehaviour {
         if (model.isMusicSection) {
             _bg.sprite = storage.sprites[model.spriteIndex];
             AudioController.Instance.StopVoice();
+            AudioController.Instance.PauseMusic();
 
             if (isChapterMusicPlayed) {
-                this.isChapterMusicPlayed = true;
-
-            } else {
                 // show play button
+            } else {
+                this.isChapterMusicPlayed = true;
+                _songCanvas.gameObject.SetActive(true);
+                _songCanvas.SendMessage("Setup");
             }
         } else {
             _bg.sprite = storage.sprites[model.spriteIndex];
@@ -90,6 +95,10 @@ public class StoryController : MonoBehaviour {
 		}
 	}
 
+    public void OnChapterMusicFinish () {
+        OnClickNext();
+    }
+
     void OnClickNext () {
         currentTextIndex += 1;
 
@@ -100,6 +109,7 @@ public class StoryController : MonoBehaviour {
         if (currentTextIndex < storage.models.Count) {
             SetNewPage();
         } else {
+            // chapter complete
             currentTextIndex = storage.models.Count - 1;
 
             AudioController.Instance.StopVoice();

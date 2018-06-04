@@ -52,7 +52,7 @@ public class BungongStorage : MonoBehaviour, StorageInterface, LyricStorageInter
         new TextModel(7,7,2),
         new TextModel(8,8,2),
         new TextModel(9,9,2),
-        new TextModel(true, 9),
+        new TextModel(true, 2),
         new TextModel(10,10,3),
         new TextModel(11,11,3),
         new TextModel(12,12,3),
@@ -74,6 +74,7 @@ public class BungongStorage : MonoBehaviour, StorageInterface, LyricStorageInter
     });
 
     List<LyricModel> _lyricModels = new List<LyricModel>(new LyricModel[] {
+        new LyricModel(8, 0),
         new LyricModel(0, 18),
         new LyricModel(1, 24),
         new LyricModel(0, 31),
@@ -98,8 +99,9 @@ public class BungongStorage : MonoBehaviour, StorageInterface, LyricStorageInter
         new LyricModel(2, 171),
         new LyricModel(3, 178),
         new LyricModel(2, 186),
-        new LyricModel(3, 192)
+        new LyricModel(3, 192),
+        new LyricModel(8, 202),
     });
 
-    float _endTime = 202f;
+    float _endTime = 211f;
 }
