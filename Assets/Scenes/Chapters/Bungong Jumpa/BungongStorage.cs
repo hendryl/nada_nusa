@@ -103,5 +103,5 @@ public class BungongStorage : MonoBehaviour, StorageInterface, LyricStorageInter
         new LyricModel(8, 202),
     });
 
-    float _endTime = 211f;
+    float _endTime = 208f;
 }

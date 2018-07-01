@@ -101,8 +101,8 @@ public class AmparStorage : MonoBehaviour, StorageInterface, LyricStorageInterfa
         new LyricModel(3, 121),
         new LyricModel(4, 125),
         new LyricModel(5, 132),
-        new LyricModel(6, 140),
+        new LyricModel(6, 137),
     });
 
-    float _endTime = 148f;
+    float _endTime = 138f;
 }

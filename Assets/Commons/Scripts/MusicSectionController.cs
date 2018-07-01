@@ -21,6 +21,7 @@ public class MusicSectionController : MonoBehaviour {
     float bgHeight;
     float currentTime = 0;
     int nextLyric = 0;
+    float movement = 0;
 
     void Awake () {
         storage = storageScript.GetComponent<LyricStorageInterface>();
@@ -38,26 +39,32 @@ public class MusicSectionController : MonoBehaviour {
 
         _nextButton.onClick.AddListener(OnClickNext);
         _nextButton.gameObject.SetActive(false);
+
+        if (isVertical) {
+            movement = bgHeight / storage.endTime;
+        } else {
+            movement = bgWidth / storage.endTime;
+        }
 	}
 
     void Update () {
         // move when music is playing
-
+        float time = Time.deltaTime;
         if (musicPlayer.isPlaying && currentTime <= storage.endTime) {
-            currentTime += Time.deltaTime;
+            currentTime += time;
 
             if (isVertical) {
                 if (bgHeight > (Mathf.Abs(bgRect.anchoredPosition.y))) {
-                    float targetY = (Time.deltaTime / storage.endTime) * bgHeight;
-                    bgRect.Translate(new Vector3(0, targetY, 0));
+                    float moveY = time * movement;
+                    bgRect.anchoredPosition = bgRect.anchoredPosition + new Vector2(0, moveY);
                 } else {
                     bgRect.anchoredPosition = new Vector2(0, bgHeight);
                     nextButton.gameObject.SetActive(true);
                 }
             } else {
                 if (bgWidth > (Mathf.Abs(bgRect.anchoredPosition.x))) {
-                    float targetX = (Time.deltaTime / storage.endTime) * bgWidth;
-                    bgRect.Translate(new Vector3(-targetX, 0, 0));
+                    float moveX = time * movement;
+                    bgRect.anchoredPosition = bgRect.anchoredPosition - new Vector2(moveX, 0);
                 } else {
                     bgRect.anchoredPosition = new Vector2(-bgWidth, 0);
                     nextButton.gameObject.SetActive(true);
@@ -70,6 +77,8 @@ public class MusicSectionController : MonoBehaviour {
                 _text.text = storage.lyrics[index];
                 nextLyric += 1;
             }
+        } else if (currentTime >= storage.endTime) {
+            nextButton.gameObject.SetActive(true);
         }
     }
 

@@ -5,10 +5,13 @@ using UnityEngine.UI;
 
 public enum GameScreen {
 	Main,
+	Tantangan,
+	Koleksi,
+	Credits,
 	Cerita,
 	Prologue,
 	BungongJumpa,
-	Ampar
+	Ampar,
 }
 
 public class ScreenManager : MonoBehaviour {
@@ -19,7 +22,7 @@ public class ScreenManager : MonoBehaviour {
 	public GameScreen currentScreen {
 		get { return _currentScreen; }
 	}
-	public Component mainScreen, ceritaScreen, prologueScreen, bungongScreen, amparScreen;
+	public Component mainScreen, ceritaScreen, prologueScreen, bungongScreen, amparScreen, tantanganScreen, koleksiScreen, creditsScreen;
 	public Image fadeOverlay;
 	public Camera mainCamera;
 
@@ -48,6 +51,9 @@ public class ScreenManager : MonoBehaviour {
 		switch (screen) {
 			case GameScreen.Main: return mainScreen;
 			case GameScreen.Cerita: return ceritaScreen;
+			case GameScreen.Tantangan: return tantanganScreen;
+			case GameScreen.Koleksi: return koleksiScreen;
+			case GameScreen.Credits: return creditsScreen;
 			case GameScreen.Prologue: return prologueScreen;
 			case GameScreen.BungongJumpa: return bungongScreen;
 			case GameScreen.Ampar: return amparScreen;

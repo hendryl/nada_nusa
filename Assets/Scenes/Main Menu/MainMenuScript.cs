@@ -95,9 +95,15 @@ public class MainMenuScript : MonoBehaviour {
 	}
 
 	void onClickTantangan () {
+		ScreenManager.Instance.SetScreen(GameScreen.Tantangan);
 	}
 
 	void onClickKoleksi () {
+		ScreenManager.Instance.SetScreen(GameScreen.Koleksi);
+	}
+
+	void OnClickInfo () {
+		ScreenManager.Instance.SetScreen(GameScreen.Credits);
 	}
 
 	void OnClickSettings () {
@@ -108,8 +114,5 @@ public class MainMenuScript : MonoBehaviour {
 		if (this.isActiveAndEnabled) {
 			currentScreen = MainMenuScreens.Main;
 		}
-	}
-
-	void OnClickInfo () {
 	}
 }
