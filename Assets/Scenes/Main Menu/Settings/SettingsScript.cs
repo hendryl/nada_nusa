@@ -18,9 +18,7 @@ public class SettingsScript : MonoBehaviour {
 		musicToggle = musicToggleG.GetComponent<Toggle>();
 		voiceToggle = voiceToggleG.GetComponent<Toggle>();
 		_settings = settings.GetComponent<Canvas>();
-	}
 
-	void Start () {
 		_settings.gameObject.SetActive(true);
 		// set toggles to user preferences
 		if (PlayerPrefs.GetInt("sound", 1) == 0) {
@@ -37,7 +35,9 @@ public class SettingsScript : MonoBehaviour {
 		musicToggleG.gameObject.SendMessage("SetInitialPosition");
 		voiceToggle.gameObject.SendMessage("SetInitialPosition");
 		_settings.gameObject.SetActive(false);
+	}
 
+	void Start () {
 		// these need to be done after toggling sound to prevent
 		// onchange* from being called
 		soundToggle.onValueChanged.AddListener(OnChangeSound);
