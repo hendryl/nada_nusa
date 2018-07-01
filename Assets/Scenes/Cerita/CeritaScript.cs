@@ -13,6 +13,7 @@ public class CeritaScript : MonoBehaviour {
 	private RectTransform _chapterCanvasT;
 
 	int currentSelection = 0;
+	bool currentlyPlaying = false;
 	const int X_DISTANCE = 1600;
 	const int BASE_X = -800;
 	const int MAX_PLAYABLE = 2; // inclusive
@@ -37,7 +38,12 @@ public class CeritaScript : MonoBehaviour {
 	void Setup () {
 		AudioController.Instance.SetMusic(clip);
 		AudioController.Instance.PlayMusic();
-		currentSelection = 0;
+
+		if (!currentlyPlaying) {
+			currentSelection = 0;
+		} else {
+			currentlyPlaying = false;
+		}
 	}
 
 	// Update is called once per frame
@@ -95,6 +101,8 @@ public class CeritaScript : MonoBehaviour {
 	}
 
 	void OnClickPlay () {
+		currentlyPlaying = true;
+
 		if (currentSelection == 0) {
 			ScreenManager.Instance.SetScreen(GameScreen.Prologue);
 		} else if (currentSelection == 1) {
