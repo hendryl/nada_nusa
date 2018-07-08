@@ -70,7 +70,7 @@ public class BungongStorage : MonoBehaviour, StorageInterface, LyricStorageInter
         "Luroh meususon, meususon nyang mala-mala",
         "Keubit that meubee meunyoe tatem com",
         "Leupah that harom si bungong jeumpa",
-        ""
+        "..."
     });
 
     List<LyricModel> _lyricModels = new List<LyricModel>(new LyricModel[] {

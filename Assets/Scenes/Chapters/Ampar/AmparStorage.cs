@@ -68,7 +68,7 @@ public class AmparStorage : MonoBehaviour, StorageInterface, LyricStorageInterfa
         "Manggalepak manggalepok, Patah kayu bengkok",
         "Bengkok dimakan api apinya can curupan",
         "Nang mana batis kutung Dikitipi dawang",
-        ""
+        "..."
     });
 
     List<LyricModel> _lyricModels = new List<LyricModel>(new LyricModel[] {
