@@ -18,7 +18,7 @@ public class CeritaScript : MonoBehaviour {
 	const int BASE_X = -800;
 	const int MAX_PLAYABLE = 2; // inclusive
 	const float SPEED = 8f;
-	string[] stories = new string[4] { "prologue", "bungong", "ampar", "cublak" };
+	string[] stories = new string[6] { "prologue", "bungong", "ampar", "cublak", "mepare", "apuse" };
 
 	void Awake () {
 		_backButton = backButton.GetComponent<Button>();
