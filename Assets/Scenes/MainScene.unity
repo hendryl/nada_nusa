@@ -1058,13 +1058,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _sprites:
-  - {fileID: 21300000, guid: e8a389d3f7ba6864cbf9135db578e9d1, type: 3}
-  - {fileID: 21300000, guid: 4df654c0312bb414da3444d3724cb9c8, type: 3}
-  - {fileID: 21300000, guid: 7e6833f36c33b6643bca370295a97150, type: 3}
-  - {fileID: 21300000, guid: cb1522619802de748bb84ea3f719ad03, type: 3}
-  - {fileID: 21300000, guid: a933dacdffd517d44859e6f1370fdb3f, type: 3}
-  - {fileID: 21300000, guid: f626c55c8d5230e408263e3e6d0cbcb2, type: 3}
-  - {fileID: 21300000, guid: 0fb584845c7881a4b968611f4fbe13ea, type: 3}
+  - {fileID: 21300000, guid: 856c17148003b3045a2d7434d388438d, type: 3}
+  - {fileID: 21300000, guid: 17ea933ed6f78b846a4d4494552ce956, type: 3}
+  - {fileID: 21300000, guid: 943930d295d38b247906083d30aecf48, type: 3}
+  - {fileID: 21300000, guid: 5372ec52a9bbbd746948a279954d2f83, type: 3}
+  - {fileID: 21300000, guid: dec563f9e872f7144882be21bc5e2ec8, type: 3}
+  - {fileID: 21300000, guid: aae0c10668e9b1b4ea8a47718557f7a7, type: 3}
+  - {fileID: 21300000, guid: a4a38e280126c8a41b61192738d26f7d, type: 3}
   _voices:
   - {fileID: 8300000, guid: bd557403cc56c0449ac048df87d14d28, type: 3}
   - {fileID: 8300000, guid: 446d061b1c862524ba7799dfa48c405a, type: 3}
@@ -8925,16 +8925,16 @@ MonoBehaviour:
   storyController: {fileID: 1769940834}
   musicPlayer: {fileID: 63364385}
   backgroundImages:
-  - {fileID: 21300000, guid: 37e774849fa10fd4785448bae7b71e0e, type: 3}
-  - {fileID: 21300000, guid: 3b191deca9644e144b3f04d97b2dc431, type: 3}
-  - {fileID: 21300000, guid: 698b154f46665b74baf8e1d38460037f, type: 3}
-  - {fileID: 21300000, guid: ccfc9cb584f4d5341932c9f91f213f30, type: 3}
-  - {fileID: 21300000, guid: afd98063750bd5d469b88d461b192514, type: 3}
-  - {fileID: 21300000, guid: ead9e19532f4d204ead94d3ed8d22a01, type: 3}
-  - {fileID: 21300000, guid: 52ba326907b163e49a1a1a03beda2978, type: 3}
-  - {fileID: 21300000, guid: 02c88fc8677a04f419955d9722aa3725, type: 3}
-  - {fileID: 21300000, guid: 018b1b000b95e1744bd579251726f727, type: 3}
-  - {fileID: 21300000, guid: 0053fb9a72e54ec429efefc64d5ab0b1, type: 3}
+  - {fileID: 21300000, guid: a380558c36bd4b245bb6e598333b8e1d, type: 3}
+  - {fileID: 21300000, guid: 73126b799604d0249a30efab890be021, type: 3}
+  - {fileID: 21300000, guid: 02a860595ea7d504a9eb9b648f18fa2f, type: 3}
+  - {fileID: 21300000, guid: 124c3be984d4f6441b4ccf749dd08601, type: 3}
+  - {fileID: 21300000, guid: f9eb64af85981a74bb70de05b8c936c0, type: 3}
+  - {fileID: 21300000, guid: ae2bcd291f63c3145902aea4e522b2ef, type: 3}
+  - {fileID: 21300000, guid: f32feed6785ceaf4ba364653bb2b9935, type: 3}
+  - {fileID: 21300000, guid: 6dbfa0efeea78f541b92d61f1a532820, type: 3}
+  - {fileID: 21300000, guid: a08999b0f40106644bcc374b1ff135c5, type: 3}
+  - {fileID: 21300000, guid: 27b5d7e59138a444c83749c3e99548c8, type: 3}
   background: {fileID: 914643583}
   textBox: {fileID: 350578310}
   nextButton: {fileID: 678842619}
@@ -13345,20 +13345,20 @@ MonoBehaviour:
   storyController: {fileID: 471319760}
   musicPlayer: {fileID: 950721706}
   backgroundImages:
-  - {fileID: 21300000, guid: 466173d28ca57f7419d0e040010a5397, type: 3}
-  - {fileID: 21300000, guid: c13e33d3811b6d8459a6d0bc0419a2df, type: 3}
-  - {fileID: 21300000, guid: 2a01b31b2c23c4c4997d88843edd6679, type: 3}
-  - {fileID: 21300000, guid: f084f15012f6006469e8d7be512b63cf, type: 3}
-  - {fileID: 21300000, guid: f99453f5c911b2140aaebaa534b80fa1, type: 3}
-  - {fileID: 21300000, guid: c82314a3b88a3f849b2c5dc8bde1827a, type: 3}
-  - {fileID: 21300000, guid: df71576e4677e1d44a5145a757f08f16, type: 3}
-  - {fileID: 21300000, guid: 727c64f2904d5e44695d9d19f963d22d, type: 3}
-  - {fileID: 21300000, guid: 32bc316e26c7df549a36f8afbb0b6c3e, type: 3}
-  - {fileID: 21300000, guid: 193f1439dabebdb4984f006a5fffd400, type: 3}
-  - {fileID: 21300000, guid: 75090672fb95c684f8a742bcc9e5d916, type: 3}
-  - {fileID: 21300000, guid: db444d564a8239540bfc737ff1c6f272, type: 3}
-  - {fileID: 21300000, guid: d562888141efafb41a7341be4a95a3db, type: 3}
-  - {fileID: 21300000, guid: 0c5f59b20ccad2642924aa7b06396e3e, type: 3}
+  - {fileID: 21300000, guid: 0c582687eb857e342a511ed4e8490b6f, type: 3}
+  - {fileID: 21300000, guid: ceb69706bc9fb1145a65dc07c009d2cc, type: 3}
+  - {fileID: 21300000, guid: 8b1a27faa6314d04f9f32d86e85f484b, type: 3}
+  - {fileID: 21300000, guid: aab334b06efc16349a481ec1125a7905, type: 3}
+  - {fileID: 21300000, guid: 392362f782c102e4cbeb2f3df8fcd306, type: 3}
+  - {fileID: 21300000, guid: 88ec4bc0244a10a4c86ef037cb3ba373, type: 3}
+  - {fileID: 21300000, guid: 2853bb2137bfcd24e8c9117572c11b2c, type: 3}
+  - {fileID: 21300000, guid: 09278419dc9c3d2468acc512acb10e2b, type: 3}
+  - {fileID: 21300000, guid: 7669e89ea1727fe4482e1eb997497d99, type: 3}
+  - {fileID: 21300000, guid: 103da88a06759924d8992c26eb9e209f, type: 3}
+  - {fileID: 21300000, guid: e9821a42d06b64b43ae5a160df494fa6, type: 3}
+  - {fileID: 21300000, guid: 4a50260814270ee499e0a77a7513fbb9, type: 3}
+  - {fileID: 21300000, guid: 4a26419e745b3a84c89e787da4058993, type: 3}
+  - {fileID: 21300000, guid: 54566fd80c4a6c84ea21b7ca7d51d80d, type: 3}
   background: {fileID: 1249174457}
   textBox: {fileID: 521252413}
   nextButton: {fileID: 1345570661}

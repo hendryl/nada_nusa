@@ -39,9 +39,11 @@ public class BungongStorage : MonoBehaviour, StorageInterface, LyricStorageInter
 		"\"Tentu saja. Berarti sekarang saya ikut yang mulia ke istana?\" kata kepala desa.",
 		"\"Tidak, aku masih harus berkelana.\"",
 		"\"Sudah kuputuskan bahwa hadiah yang akan kuberi adalah keindahan alunan lagu daerah yang ada di kerajaan Nusantara.\"",
-		"Kemudian pangeran pun melanjutkan perjalanannya."
+		"Kemudian pangeran pun melanjutkan perjalanannya.",
+        "Bungong Jeumpa",
     });
     List<TextModel> _models = new List<TextModel>(new TextModel[] {
+        new TextModel(16,16,5),
 		new TextModel(0,0,0),
         new TextModel(1,1,0),
         new TextModel(2,2,0),

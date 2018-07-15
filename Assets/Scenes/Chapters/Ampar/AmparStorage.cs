@@ -39,9 +39,11 @@ public class AmparStorage : MonoBehaviour, StorageInterface, LyricStorageInterfa
 		"\"Lagu itu berjudul Ampar-Ampar Pisang. Lagu yang kami nyanyikan saat membuat kue rimpi.\" jawab bapak.",
 		"\"Oooooh… Luar Biasa.\" ujar pangeran.",
 		"\"Bagaimana jika kalian aku undang ke pesta ulang tahun raja untuk menyanyikan lagu Ampar-ampar Pisang?\" lanjutnya.",
-		"Bapak, ibu, kakak, dan adik sangat senang dan menerima undangan tersebut. "
+		"Bapak, ibu, kakak, dan adik sangat senang dan menerima undangan tersebut.",
+        "Ampar Ampar Pisang",
     });
     List<TextModel> _models = new List<TextModel>(new TextModel[] {
+        new TextModel(16,16,6),
 		new TextModel(0,0,0),
         new TextModel(1,1,0),
         new TextModel(2,2,0),
