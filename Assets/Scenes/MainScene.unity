@@ -5157,6 +5157,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b928579a5938d147b37febd644a9a5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  id: music cerita menu
 --- !u!114 &572285381
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5198,18 +5199,7 @@ MonoBehaviour:
   m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 572285380}
-        m_MethodName: OnValueChanged
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
+      m_Calls: []
     m_TypeName: UnityEngine.UI.Toggle+ToggleEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
   m_IsOn: 1
@@ -9141,6 +9131,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b928579a5938d147b37febd644a9a5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  id: voice
 --- !u!114 &1101835479
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9182,18 +9173,7 @@ MonoBehaviour:
   m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1101835478}
-        m_MethodName: OnValueChanged
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_TypeName: UnityEngine.UI.Toggle+ToggleEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
   m_IsOn: 1
@@ -9674,7 +9654,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1154940761
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11644,6 +11624,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b928579a5938d147b37febd644a9a5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  id: sound
 --- !u!114 &1383273728
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11685,18 +11666,7 @@ MonoBehaviour:
   m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1383273727}
-        m_MethodName: OnValueChanged
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
+      m_Calls: []
     m_TypeName: UnityEngine.UI.Toggle+ToggleEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
   m_IsOn: 1
@@ -15690,6 +15660,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b928579a5938d147b37febd644a9a5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  id: voice cerita menu
 --- !u!114 &1909560026
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15731,18 +15702,7 @@ MonoBehaviour:
   m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1909560025}
-        m_MethodName: OnValueChanged
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_TypeName: UnityEngine.UI.Toggle+ToggleEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
   m_IsOn: 1
@@ -16569,6 +16529,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b928579a5938d147b37febd644a9a5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  id: music
 --- !u!114 &2032688122
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16610,18 +16571,7 @@ MonoBehaviour:
   m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2032688121}
-        m_MethodName: OnValueChanged
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
+      m_Calls: []
     m_TypeName: UnityEngine.UI.Toggle+ToggleEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
   m_IsOn: 1
@@ -17284,6 +17234,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b928579a5938d147b37febd644a9a5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  id: sound cerita menu
 --- !u!114 &2118577773
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17325,18 +17276,7 @@ MonoBehaviour:
   m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2118577772}
-        m_MethodName: OnValueChanged
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
+      m_Calls: []
     m_TypeName: UnityEngine.UI.Toggle+ToggleEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
   m_IsOn: 1

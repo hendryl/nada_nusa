@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class ToggleScript : MonoBehaviour {
+	public string id;
 	private float speed = 10f;
 
 	private float onX, offX;
@@ -12,6 +13,10 @@ public class ToggleScript : MonoBehaviour {
 
 	void Awake () {
 		toggle = GetComponent<Toggle>();
+		toggle.onValueChanged.AddListener(delegate {
+			OnValueChanged(toggle);
+		});
+
 		pin = toggle.transform.Find("Pin");
 		barOn = toggle.transform.Find("Bar-On");
 
@@ -19,11 +24,17 @@ public class ToggleScript : MonoBehaviour {
 		offX = onX - 71;
 	}
 
+	void onEnable () {
+		SetInitialPosition();
+	}
+
 	void Update () {
 		UpdatePosition();
 	}
 
 	void UpdatePosition () {
+		barOn.gameObject.SetActive(toggle.isOn);
+
 		if (toggle.isOn && Mathf.Abs(pin.localPosition.x - onX) > 0.01) {
 			if (pin.localPosition.x > onX) {
 				pin.transform.localPosition = new Vector3(onX, pin.localPosition.y, pin.localPosition.z);
@@ -51,8 +62,8 @@ public class ToggleScript : MonoBehaviour {
 		}
 	}
 
-	public void OnValueChanged () {
-		if (toggle.isOn) {
+	public void OnValueChanged (Toggle t) {
+		if (t.isOn) {
 			barOn.gameObject.SetActive(true);
 		} else {
 			barOn.gameObject.SetActive(false);

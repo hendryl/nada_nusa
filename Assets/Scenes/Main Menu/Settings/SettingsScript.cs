@@ -17,24 +17,9 @@ public class SettingsScript : MonoBehaviour {
 		soundToggle = soundToggleG.GetComponent<Toggle>();
 		musicToggle = musicToggleG.GetComponent<Toggle>();
 		voiceToggle = voiceToggleG.GetComponent<Toggle>();
+
 		_settings = settings.GetComponent<Canvas>();
-
-		_settings.gameObject.SetActive(true);
-		// set toggles to user preferences
-		if (PlayerPrefs.GetInt("sound", 1) == 0) {
-			soundToggle.isOn = false;
-		}
-		if (PlayerPrefs.GetInt("music", 1) == 0) {
-			musicToggle.isOn = false;
-		}
-		if (PlayerPrefs.GetInt("voice", 1) == 0) {
-			voiceToggle.isOn = false;
-		}
-
-		soundToggle.gameObject.SendMessage("SetInitialPosition");
-		musicToggleG.gameObject.SendMessage("SetInitialPosition");
-		voiceToggle.gameObject.SendMessage("SetInitialPosition");
-		_settings.gameObject.SetActive(false);
+		Setup();
 	}
 
 	void Start () {
@@ -43,6 +28,17 @@ public class SettingsScript : MonoBehaviour {
 		soundToggle.onValueChanged.AddListener(OnChangeSound);
 		musicToggle.onValueChanged.AddListener(OnChangeMusic);
 		voiceToggle.onValueChanged.AddListener(OnChangeVoice);
+	}
+
+	void OnEnable () {
+		Setup();
+	}
+
+	public void Setup () {
+		// set toggles to user preferences
+		soundToggle.isOn = PlayerPrefs.GetInt("sound", 1) == 1;
+		musicToggle.isOn = PlayerPrefs.GetInt("music", 1) == 1;
+		voiceToggle.isOn = PlayerPrefs.GetInt("voice", 1) == 1;
 	}
 
 	void OnChangeSound (bool newValue) {
