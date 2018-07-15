@@ -8939,7 +8939,7 @@ MonoBehaviour:
   textBox: {fileID: 350578310}
   nextButton: {fileID: 678842619}
   menuButton: {fileID: 528160007}
-  closeMenuButton: {fileID: 0}
+  closeMenuButton: {fileID: 1969817413}
   isVertical: 0
 --- !u!1 &1092184214
 GameObject:
@@ -13363,7 +13363,7 @@ MonoBehaviour:
   textBox: {fileID: 521252413}
   nextButton: {fileID: 1345570661}
   menuButton: {fileID: 1294980081}
-  closeMenuButton: {fileID: 0}
+  closeMenuButton: {fileID: 1969817413}
   isVertical: 1
 --- !u!114 &1647837773
 MonoBehaviour:
