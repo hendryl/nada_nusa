@@ -31,9 +31,11 @@ public class PrologueStorage : MonoBehaviour, StorageInterface {
         "Kemudian pangeran berpamitan dengan raja dan ratu lalu berangkat mencari hadiah untuk ayahnya.",
         "Pangeran membuka peta ajaib miliknya. Namun karena ia belum mengetahui hadiah apa yang ingin diberikan kepada raja, peta belum menunjukkan daerah yang ingin dituju.",
         "\"Waduh, petanya masih kosong, kalau begitu aku akan coba cari hadiah raja dari daerah yang paling barat.\"",
-        "Pangeran pun memulai perjalanan mencari hadiah."
+        "Pangeran pun memulai perjalanan mencari hadiah.",
+        "Prolog"
     });
     public List<TextModel> _models = new List<TextModel>(new TextModel[] {
+        new TextModel(13, -1, 7),
         new TextModel(0,0,0),
         new TextModel(1,1,0),
         new TextModel(2,2,1),
@@ -46,6 +48,6 @@ public class PrologueStorage : MonoBehaviour, StorageInterface {
         new TextModel(9,9,5),
         new TextModel(10,10,5),
         new TextModel(11,11,6),
-        new TextModel(12,12,6)
+        new TextModel(12,12,6),
     });
 }

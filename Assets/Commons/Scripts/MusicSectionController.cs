@@ -11,6 +11,8 @@ public class MusicSectionController : MonoBehaviour {
     public Button nextButton, menuButton, closeMenuButton;
     public bool isVertical = false;
 
+    public Image logo;
+
     LyricStorageInterface storage;
 
     Canvas bg;
@@ -113,7 +115,6 @@ public class MusicSectionController : MonoBehaviour {
             NewImage.sprite = currentSprite;
             RectTransform rect = NewObj.GetComponent<RectTransform>();
             RectTransform parent = bg.GetComponent<RectTransform>();
-
             rect.SetParent(bg.transform); // Assign the newly created Image GameObject as a Child of the Parent Panel.
 
             // Set image sizing and anchors
@@ -136,6 +137,10 @@ public class MusicSectionController : MonoBehaviour {
 
         bgWidth = Mathf.Abs(lastImage.GetComponent<RectTransform>().anchoredPosition.x);
         bgHeight = Mathf.Abs(lastImage.GetComponent<RectTransform>().anchoredPosition.y);
+
+        if (logo) {
+            logo.gameObject.transform.SetAsLastSibling();
+        }
     }
 
     public void OnClickMenu () {

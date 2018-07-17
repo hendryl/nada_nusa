@@ -76,7 +76,10 @@ public class StoryController : MonoBehaviour {
         } else {
             _bg.sprite = storage.sprites[model.spriteIndex];
             _text.text = storage.texts[model.textIndex];
-            AudioController.Instance.PlayVoice(storage.voices[model.voiceIndex]);
+
+            if (model.voiceIndex >= 0) {
+                AudioController.Instance.PlayVoice(storage.voices[model.voiceIndex]);
+            }
         }
     }
 
