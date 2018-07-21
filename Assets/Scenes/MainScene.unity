@@ -6565,12 +6565,12 @@ MonoBehaviour:
   nextButton: {fileID: 1565299836}
   menuButton: {fileID: 2024471951}
   textBoxButton: {fileID: 712696967}
-  playButton: {fileID: 0}
+  playButton: {fileID: 1155009694}
   textBox: {fileID: 35013605}
   menuCanvas: {fileID: 1746585888}
   chapterCompleteCanvas: {fileID: 595565656}
   songCanvas: {fileID: 1643972736}
-  overlayCanvas: {fileID: 0}
+  overlayCanvas: {fileID: 707254425}
 --- !u!1 &742909281
 GameObject:
   m_ObjectHideFlags: 0
@@ -16513,7 +16513,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1878333512
 RectTransform:
   m_ObjectHideFlags: 0
