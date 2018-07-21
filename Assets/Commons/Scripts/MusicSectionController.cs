@@ -173,7 +173,7 @@ public class MusicSectionController : MonoBehaviour {
             Image NewImage = NewObj.AddComponent<Image>();
 
             // hack to fix empty image
-            if (isVertical && i == 0) {
+            if (isVertical && (i <= 1)) {
                 var color = NewImage.color;
                 color.a = 0;
                 NewImage.color = color;
@@ -198,7 +198,7 @@ public class MusicSectionController : MonoBehaviour {
             rect.sizeDelta = Vector2.zero;
 
             if (isVertical) {
-                rect.Translate(new Vector3(0, -i * Screen.height, 0));
+                rect.Translate(new Vector3(0, -1 * (i * Screen.height), 0));
             } else {
                 rect.Translate(new Vector3(i * Screen.width, 0, 0));
             }
