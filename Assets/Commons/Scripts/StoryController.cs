@@ -7,12 +7,12 @@ public class StoryController : MonoBehaviour {
 	public AudioClip clip;
     public Image background;
     public Component storageScript;
-    public Button prevButton, nextButton, menuButton, textBoxButton;
-    public Canvas textBox, menuCanvas, chapterCompleteCanvas, songCanvas;
+    public Button prevButton, nextButton, menuButton, textBoxButton, playButton;
+    public Canvas textBox, menuCanvas, chapterCompleteCanvas, songCanvas, overlayCanvas;
 
-    Canvas _songCanvas;
+    Canvas _songCanvas, _overlayCanvas;
     StorageInterface storage;
-    Button _prevButton, _nextButton, _menuButton, _textBoxButton;
+    Button _prevButton, _nextButton, _menuButton, _textBoxButton, _playButton;
     RectTransform _textBoxRect;
     Image _bg;
     Button _clickArea;
@@ -34,6 +34,8 @@ public class StoryController : MonoBehaviour {
         _menuButton = menuButton.GetComponent<Button>();
         _textBoxButton = textBoxButton.GetComponent<Button>();
         _songCanvas = songCanvas.GetComponent<Canvas>();
+        _overlayCanvas = overlayCanvas.GetComponent<Canvas>();
+        _playButton = playButton.GetComponent<Button>();
         storage = storageScript.GetComponent<StorageInterface>();
 	}
 
@@ -42,6 +44,7 @@ public class StoryController : MonoBehaviour {
         _nextButton.onClick.AddListener(OnClickNext);
         _menuButton.onClick.AddListener(OnClickMenu);
         _textBoxButton.onClick.AddListener(OnClickTextBoxButton);
+        _playButton.onClick.AddListener(OnClickPlay);
 	}
 
 	void Setup () {
@@ -67,13 +70,15 @@ public class StoryController : MonoBehaviour {
             AudioController.Instance.PauseMusic();
 
             if (isChapterMusicPlayed) {
-                // show play button
+                _text.text = "";
+                _overlayCanvas.gameObject.SetActive(true);
             } else {
                 this.isChapterMusicPlayed = true;
                 _songCanvas.gameObject.SetActive(true);
                 _songCanvas.SendMessage("Setup");
             }
         } else {
+            _overlayCanvas.gameObject.SetActive(false);
             _bg.sprite = storage.sprites[model.spriteIndex];
             _text.text = storage.texts[model.textIndex];
 
@@ -141,6 +146,12 @@ public class StoryController : MonoBehaviour {
             menuCanvas.gameObject.SetActive(true);
             AudioController.Instance.PauseVoice();
         }
+    }
+
+    void OnClickPlay () {
+        isChapterMusicPlayed = false;
+        _overlayCanvas.gameObject.SetActive(false);
+        SetNewPage();
     }
 
     void OnClickTextBoxButton () {
