@@ -12,13 +12,18 @@ enum TantanganScreen {
 
 public class TantanganScript : MonoBehaviour {
 	public Component storageScript;
-	public Button backButton, mulaiButton, firstButton, secondButton, thirdButton;
+	public Button backButton, mulaiButton, firstButton, secondButton, thirdButton, winAgainButton, loseAgainButton;
 	public Canvas startCanvas, gameCanvas, winCanvas, loseCanvas;
     public AudioSource musicPlayer;
+	public Text winText, loseText;
+	public AudioClip winSound, loseSound;
 
 	ITantanganStorage storage;
 	Canvas _startCanvas, _gameCanvas, _winCanvas, _loseCanvas;
 	Button _firstButton, _secondButton, _thirdButton;
+	Text _winText, _loseText;
+
+	TantanganQuiz currentQuiz;
 
 	void Awake () {
 		storage = storageScript.GetComponent<ITantanganStorage>();
@@ -29,6 +34,8 @@ public class TantanganScript : MonoBehaviour {
 		_firstButton = firstButton.GetComponent<Button>();
 		_secondButton = secondButton.GetComponent<Button>();
 		_thirdButton = thirdButton.GetComponent<Button>();
+		_winText = winText.GetComponent<Text>();
+		_loseText = loseText.GetComponent<Text>();
 	}
 
 	// Use this for initialization
@@ -37,6 +44,8 @@ public class TantanganScript : MonoBehaviour {
 
 		backButton.GetComponent<Button>().onClick.AddListener(OnClickBack);
 		mulaiButton.GetComponent<Button>().onClick.AddListener(OnClickMulai);
+		winAgainButton.GetComponent<Button>().onClick.AddListener(OnClickMulai);
+		loseAgainButton.GetComponent<Button>().onClick.AddListener(OnClickMulai);
 
 		firstButton.onClick.AddListener(OnClickFirst);
 		secondButton.onClick.AddListener(OnClickSecond);
@@ -88,14 +97,14 @@ public class TantanganScript : MonoBehaviour {
 	}
 
 	void ShowQuizQuestion () {
-		TantanganQuiz quiz = storage.GetNextQuiz();
+		currentQuiz = storage.GetNextQuiz();
 
 		// set answers
-		_firstButton.GetComponent<Image>().sprite = quiz.choices[0].buttonImage;
-		_secondButton.GetComponent<Image>().sprite = quiz.choices[1].buttonImage;
-		_thirdButton.GetComponent<Image>().sprite = quiz.choices[2].buttonImage;
+		_firstButton.GetComponent<Image>().sprite = currentQuiz.choices[0].buttonImage;
+		_secondButton.GetComponent<Image>().sprite = currentQuiz.choices[1].buttonImage;
+		_thirdButton.GetComponent<Image>().sprite = currentQuiz.choices[2].buttonImage;
 
-		musicPlayer.clip = quiz.question.voice;
+		musicPlayer.clip = currentQuiz.question.voice;
 		musicPlayer.Play();
 	}
 
@@ -127,8 +136,21 @@ public class TantanganScript : MonoBehaviour {
 	}
 
 	void OnClickAnswer (int id) {
-		// TODO: Fix this
-		Debug.Log(id);
-		ShowQuizQuestion();
+		TantanganAnswer answer = currentQuiz.question.answer;
+		TantanganAnswer selectedAnswer = currentQuiz.choices[id];
+
+		if (selectedAnswer.id == answer.id) {
+			// correct
+			_winText.text = answer.answer;
+			SwitchCanvas(TantanganScreen.Win);
+			musicPlayer.clip = winSound;
+			musicPlayer.Play();
+		} else {
+			// wrong
+			_loseText.text = answer.answer;
+			SwitchCanvas(TantanganScreen.Lose);
+			musicPlayer.clip = loseSound;
+			musicPlayer.Play();
+		}
 	}
 }
