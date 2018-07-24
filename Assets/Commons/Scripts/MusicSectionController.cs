@@ -11,6 +11,7 @@ public class MusicSectionController : MonoBehaviour {
     public Canvas background, textBox, flowBackground;
     public Button nextButton, menuButton, closeMenuButton;
     public bool isVertical = false;
+    public bool isSetup = false;
 
     public Image logo;
 
@@ -59,6 +60,13 @@ public class MusicSectionController : MonoBehaviour {
     void Update () {
         // move when music is playing
         float time = Time.deltaTime;
+
+        if (PlayerPrefs.GetInt("music", 1) == 0) {
+            musicPlayer.mute = true;
+        } else {
+            musicPlayer.mute = false;
+        }
+
         if (musicPlayer.isPlaying && currentTime <= storage.endTime) {
             currentTime += time;
 
@@ -107,15 +115,19 @@ public class MusicSectionController : MonoBehaviour {
         currentTime = 0;
         nextLyric = 0;
 
-        SetupImages();
-        SetupFlow();
-
         if (PlayerPrefs.GetInt("music", 1) == 0) {
             musicPlayer.mute = true;
         } else {
             musicPlayer.mute = false;
         }
 
+        if (!isSetup) {
+            SetupImages();
+            SetupFlow();
+            isSetup = true;
+        }
+
+        bg.transform.localPosition = new Vector3(0, 0, 0);
         musicPlayer.Play();
     }
 

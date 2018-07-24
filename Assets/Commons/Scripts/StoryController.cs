@@ -67,7 +67,8 @@ public class StoryController : MonoBehaviour {
         if (model.isMusicSection) {
             _bg.sprite = storage.sprites[model.spriteIndex];
             AudioController.Instance.StopVoice();
-            AudioController.Instance.PauseMusic();
+            AudioController.Instance.StopMusic();
+            AudioController.Instance.SetMusic(null);
 
             if (isChapterMusicPlayed) {
                 _text.text = "";
@@ -105,7 +106,8 @@ public class StoryController : MonoBehaviour {
 
     public void OnChapterMusicFinish () {
         OnClickNext();
-        AudioController.Instance.UnPauseMusic();
+        AudioController.Instance.SetMusic(clip);
+        AudioController.Instance.PlayMusic();
     }
 
     void OnClickNext () {
